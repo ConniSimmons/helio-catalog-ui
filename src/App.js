@@ -20,7 +20,7 @@ class App extends Component {
     }
     getCatalog = () =>
     {
-      fetch('https://helio-catalog-api.herokuapp.com/')
+      fetch('https://helio-catalog-api.herokuapp.com/api/catalog')
       //fetch('http://localhost:8080/api/catalog')
       .then((response) =>
       {
