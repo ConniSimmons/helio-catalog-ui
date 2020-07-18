@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import CatalogDataService from "../DataService";
+import { Link } from "react-router-dom";
+import DispCatalog from "./dispCatalog";
 
-import "./App.scss";
-import AddCatalog from "./pages/addCatalog";
-import DispCatalog from "./pages/dispCatalog";
-import CatalogList from "./pages/listCatalog";
-import Page from "./components/Page";
 
-class App extends Component {
+export default class CatalogList extends Component {
   constructor()
     {
       super();
@@ -20,7 +16,7 @@ class App extends Component {
     }
     getCatalog = () =>
     {
-      fetch('http://localhost:8080/api/terms')
+      fetch('http://localhost:8080/api/catalog')
       .then((response) =>
       {
         return response.json()
@@ -35,7 +31,7 @@ class App extends Component {
             return <li 
                       key={item._id}
                       id={item._id}
-                      onClick={this.updateTerms}
+                      onClick={this.updateCatalog}
                       >{item.title || "Unknown"}</li>
           }),
           editForm: ''
@@ -46,7 +42,7 @@ class App extends Component {
     updateCatalog = (event) =>
     {
       // this is the id of the item i want to update
-      //console.log('all termss: ', this.state.termss);
+      //console.log('all catalog: ', this.state.catalog);
       const id = event.target.getAttribute('id');
       const stupidFind = (id) =>
       {
@@ -61,8 +57,8 @@ class App extends Component {
         return null;
       }
       let thisCatalog = stupidFind(id);
-      //thisTerms = thisTerms[0];
-      //console.log('thisTerms: ', thisTerms);
+      //thisCatalog = thisCatalog[0];
+      //console.log('thisCatalog: ', thisCatalog);
       //console.log('id: ', id);
       this.setState({
         editForm: ''
@@ -79,28 +75,15 @@ class App extends Component {
     {
       this.getCatalog();
     }
-  
-  render()
-  {
-    return (
-      <div>
-
-      <Router>
-        <Page>
-        <div>
-          <div className="container mt-3">
-            <Switch>
-              <Route exact path={["/", "/catalog"]} component={CatalogList} />
-              <Route exact path="/add" component={AddCatalog} />
-              <Route path="/catalog/:id" component={DispCatalog} />
-            </Switch>
-          </div>
+    render()
+    {
+      return (
+        <div className="App">
+          <ul>
+          {this.state.catalogList}
+          </ul>
+          {this.state.editForm}
         </div>
-        </Page>
-      </Router>
-      </div>
-    );
+      )
+    }
   }
-}
-
-export default App;
