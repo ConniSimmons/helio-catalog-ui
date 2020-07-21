@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CatalogDataService from '../DataService';
+import CatalogDataService from "../DataService";
 
 export default class AddCatalog extends Component {
   constructor(props) {
@@ -14,36 +14,36 @@ export default class AddCatalog extends Component {
     this.state = {
       id: null,
       title: "",
-      description: "", 
+      description: "",
       link: "",
       displayname: "",
       archived: false,
 
-      submitted: false
+      submitted: false,
     };
   }
 
   onChangeTitle(e) {
     this.setState({
-      title: e.target.value
+      title: e.target.value,
     });
   }
 
   onChangeDescription(e) {
     this.setState({
-      description: e.target.value
+      description: e.target.value,
     });
   }
 
   onChangeLink(e) {
     this.setState({
-      link: e.target.value
+      link: e.target.value,
     });
   }
 
   onChangeDisplayname(e) {
     this.setState({
-      displayname: e.target.value
+      displayname: e.target.value,
     });
   }
 
@@ -52,11 +52,11 @@ export default class AddCatalog extends Component {
       title: this.state.title,
       description: this.state.description,
       link: this.state.link,
-      displayname: this.state.displayname
+      displayname: this.state.displayname,
     };
 
     CatalogDataService.create(data)
-      .then(response => {
+      .then((response) => {
         this.setState({
           id: response.data.id,
           title: response.data.title,
@@ -65,11 +65,11 @@ export default class AddCatalog extends Component {
           displayname: response.data.displayname,
           archived: response.data.archived,
 
-          submitted: true
+          submitted: true,
         });
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   }
@@ -83,7 +83,7 @@ export default class AddCatalog extends Component {
       displayname: "",
       archived: false,
 
-      submitted: false
+      submitted: false,
     });
   }
 
@@ -94,7 +94,7 @@ export default class AddCatalog extends Component {
           <div>
             <h4>You submitted successfully!</h4>
             <button className="btn btn-success" onClick={this.newCatalog}>
-              Add
+              Add Another
             </button>
           </div>
         ) : (
