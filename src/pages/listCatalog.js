@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import CatalogDataService from "../DataService";
-import { Link } from "react-router-dom";
-import DispCatalog from "./dispCatalog";
+
+import EditCatalog from "./editCatalog";
 
 
 export default class CatalogList extends Component {
@@ -12,7 +11,10 @@ export default class CatalogList extends Component {
         catalog: [],
         catalogList: [],
         editForm: '',
-      }
+        catalogElements: [],
+        catalogTasks: [],
+        thingToDisplay: '',
+        }
     }
     getCatalog = () =>
     {
@@ -45,7 +47,7 @@ export default class CatalogList extends Component {
       // this is the id of the item i want to update
       //console.log('all catalog: ', this.state.catalog);
       const id = event.target.getAttribute('id');
-      const stupidFind = (id) =>
+      const stupidFind = (_id) =>
       {
         for (let i = 0; i < this.state.catalog.length; i++)
         {
@@ -66,24 +68,29 @@ export default class CatalogList extends Component {
       }, function()
       {
         this.setState({
-          editForm: <DispCatalog {...thisCatalog} getCatalog={this.getCatalog} />
+          editForm: <EditCatalog {...thisCatalog} getCatalog={this.getCatalog} />
         })
       });
-  
-      return;
     }
+      return;
+    
     componentDidMount()
     {
       this.getCatalog();
     }
+
     render()
     {
       return (
+        <div>
+          <h4>GLOSSARY</h4>
+          <p>Please select a term:</p>
         <div className="App">
           <ul>
           {this.state.catalogList}
           </ul>
           {this.state.editForm}
+        </div>
         </div>
       )
     }

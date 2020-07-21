@@ -1,21 +1,16 @@
 import React, { Component } from "react";
-import CatalogDataService from "../DataService";
-import axios from 'axios';
 
-
-
-export default class DispCatalog extends Component {
+export default class EditCatalog extends Component {
   constructor(props) {
     super(props);
     this.state = {
       catalog: [],
-      title: props.title,
+      title: props.title ,
       description: props.description,
       link: props.link,
       displayname: props.displayname,
       archived: props.archived,
-      isLoading: true,
-      errors: null
+      
   };
   console.log('props: ', props);
   }
@@ -44,10 +39,19 @@ export default class DispCatalog extends Component {
       changeHandler = (event) =>
       {
         const key = event.target.getAttribute('name');
+        event.preventDefault();
         const update = {};
         update[key] = event.target.value;
         this.setState(update);
       }
+
+      updateArchived = (e) => {
+        const currentState = this.state.archived;
+          this.setState({ archived: !currentState }); 
+    
+        console.log(currentState);
+      }
+  
       
       render()
      {
@@ -100,20 +104,43 @@ export default class DispCatalog extends Component {
                   </label>
                     {this.state.archived ? "Archived" : "Current"}
                 </div>
-              
-              
-              <button 
-                type='submit' 
-                value="Update" 
+
+            {this.state.archived ? (
+              <button
+              name="archived"
+              default value={this.state.archived}
+                className="badge badge-primary mr-2"
+                onClick={() => this.updateArchived(false)}
               >
-              Update
+                UnArchive
               </button>
-              <p>{this.state.message}</p>
+            ) : (
+              <button
+                name="archived"
+                default value={this.state.archived}
+                className="badge badge-primary mr-2"
+                onClick={() => this.updateArchived(true)}
+              >
+                Archive
+              </button>
+            )}
+
+            <button
+              type="submit"
+              className="badge badge-success"
+              value="update"
+            >
+              Update
+            </button>
+
+            <p>{this.state.message}</p>
+            </form>
+          </div>
+        
             
-              </form>
             </div>
         
-      </div>
+      
     );
   }
 }
