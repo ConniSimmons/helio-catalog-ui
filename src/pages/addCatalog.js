@@ -143,7 +143,6 @@ export default class AddCatalog extends Component {
                 type="text"
                 className="form-control"
                 id="displayname"
-                required
                 value={this.state.displayname}
                 onChange={this.onChangeDisplayname}
                 name="displayname"

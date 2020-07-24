@@ -17,10 +17,7 @@ class App extends Component {
             <div>
               <div className="container mt-3">
                 <Switch>
-                  <Route
-                    exact
-                    path={["/", "/catalog"]}
-                    component={CatalogList}
+                  <Route exact path={["/", "/catalog"]} component={CatalogList}
                   />
                   <Route exact path="/add" component={AddCatalog} />
                   <Route path="/catalog/:id" component={EditCatalog} />
@@ -35,3 +32,5 @@ class App extends Component {
 }
 
 export default App;
+
+
