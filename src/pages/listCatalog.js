@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import EditCatalog from "./editCatalog";
-import Sorter from "../sorter";
+
 
 export default class CatalogList extends Component {
   constructor() {
@@ -73,7 +73,7 @@ export default class CatalogList extends Component {
     return (
       <div>
         <h4>GLOSSARY</h4>
-        <Sorter />
+      
         <p>Please select a term:</p>
         <div className="App">
           <ul>{this.state.catalogList}</ul>
