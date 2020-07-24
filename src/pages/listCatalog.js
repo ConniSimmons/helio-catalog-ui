@@ -12,8 +12,8 @@ export default class CatalogList extends Component {
     };
   }
   getCatalog = () => {
-    //fetch('https://helio-catalog-api.herokuapp.com/api/catalog')
-    fetch("http://localhost:8080/api/catalog")
+    fetch('https://helio-catalog-api.herokuapp.com/api/catalog')
+    //fetch("http://localhost:8080/api/catalog")
       .then((response) => {
         return response.json();
       })

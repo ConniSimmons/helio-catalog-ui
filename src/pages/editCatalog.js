@@ -23,8 +23,8 @@ export default class EditCatalog extends Component {
       method: "PUT",
       body: JSON.stringify(this.state),
     };
-    //fetch(`https://helio-catalog-api.herokuapp.com/catalog/${id}`, fetchOptions)
-    fetch(`http://localhost:8080/api/catalog/${id}`, fetchOptions)
+    fetch(`https://helio-catalog-api.herokuapp.com/catalog/${id}`, fetchOptions)
+    //fetch(`http://localhost:8080/api/catalog/${id}`, fetchOptions)
       .then((response) => {
         return response.json();
       })
