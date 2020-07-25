@@ -1,3 +1,5 @@
+
+
 .list {
   text-align: left;
   max-width: 750px;
@@ -17,9 +19,14 @@
   text-align: center;
   color: black;
   overflow: hidden;
-  position: relative;
+  position: fixed;
   margin: 0;
   bottom: 0;
   width: 100%;  
   flex-shrink: 0;
+  background-color: white;
+  height: 70px;
+}
+body {
+  margin-bottom: 100px;
 }

@@ -52,7 +52,7 @@ export default class EditCatalog extends Component {
     return (
       <div>
         <div className="edit-form">
-          <h3>Edit Entry</h3>
+          <h4>Edit Entry</h4>
           {this.state.editForm}
 
           <form onSubmit={this.submitHandler}>
